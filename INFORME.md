@@ -56,14 +56,17 @@ Como resultado de esta prueba, el sistema ejecutó automáticamente el pipeline 
 
 ## 5. Evidencias Gráficas del Laboratorio
 
-* **Figura 1:** Historial de ejecuciones exitosas del pipeline en la pestaña *Actions* de GitHub.
-  ![Pipeline Exitoso](./assets/acciones-exitoso.png)
+* **Figura 1:** Historial de ejecuciones exitosas del pipeline en la pestaña *Actions*.
+  ![Pipeline Actions](./assets/cap1-actions.png)
 
-* **Figura 2:** Vista de la Pull Request mostrando el estado de ejecución y el bloqueo de fusión (*Merging is blocked*).
-  ![Pull Request Bloqueada](./assets/pr-bloqueada.png)
+* **Figura 2:** Vista de la Pull Request mostrando el estado y el bloqueo de fusión (*Merging is blocked*).
+  ![PR Bloqueada](./assets/cap2-pr-bloqueada.png)
 
-* **Figura 3:** Comprobación final del éxito de las verificaciones (*All checks have passed*) y la correcta integración en `main`.
-  ![Checks Pasados y Merge](./assets/checks-pasados.png)
+* **Figura 3:** Comprobación final del éxito de las verificaciones (*All checks have passed*).
+  ![Checks Verdes](./assets/cap3-checks-verdes.png)
+
+* **Figura 4:** Fusión exitosa y cierre de la solicitud de extracción en la rama `main`.
+  ![Merge Exitoso](./assets/cap4-merge-exitoso.png)
 6. Conclusiones
 La automatización mediante GitHub Actions demostró ser una herramienta fundamental para asegurar que cada fragmento de código integrado cumpla con los estándares de calidad definidos mediante pruebas automatizadas con Jest.
 
