@@ -54,6 +54,7 @@ Abrí una Pull Request desde feature/prueba hacia main en la plataforma de GitHu
 
 Como resultado de esta prueba, el sistema ejecutó automáticamente el pipeline de CI y bloqueó de forma inmediata el botón de fusión (Merging is blocked) hasta que las pruebas concluyeron de manera exitosa en verde (All checks have passed), momento en el cual procedí a fusionar los cambios de manera segura y eliminar la rama de prueba.
 
+
 ## 5. Evidencias Gráficas del Laboratorio
 
 * **Figura 1:** Historial de ejecuciones exitosas del pipeline en la pestaña *Actions*.
@@ -67,6 +68,9 @@ Como resultado de esta prueba, el sistema ejecutó automáticamente el pipeline 
 
 * **Figura 4:** Fusión exitosa y cierre de la solicitud de extracción en la rama `main`.
   ![Merge Exitoso](./assets/cap4-merge-exitoso.png)
+
+
+
 6. Conclusiones
 La automatización mediante GitHub Actions demostró ser una herramienta fundamental para asegurar que cada fragmento de código integrado cumpla con los estándares de calidad definidos mediante pruebas automatizadas con Jest.
 
