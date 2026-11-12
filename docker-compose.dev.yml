@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  api:
+    # Hereda la configuración base del servicio api del docker-compose.yml principal
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npm run dev
+    environment:
+      - NODE_ENV=development
