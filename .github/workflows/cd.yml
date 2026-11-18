@@ -38,7 +38,7 @@ jobs:
         with:
           image-ref: ${{ secrets.DOCKER_USERNAME }}/mi-app:${{ github.sha }}
           format: 'table'
-          exit-code: '0'
+          exit-code: '0'       # <--- Esto debe estar en '0' para que no falle el pipeline
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
