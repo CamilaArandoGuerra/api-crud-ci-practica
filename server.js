@@ -4,9 +4,9 @@ const mysql = require('mysql2');
 const app = express();
 app.use(express.json());
 
-// Aquí puedes colocar tus rutas y conexión a la base de datos (ej. /api/movies, etc.)
-app.get('/', (req, res) => {
-  res.status(200).json({ mensaje: 'API CRUD funcionando correctamente' });
+// Endpoint de salud requerido para validar el contenedor
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok', version: '2.0.0' });
 });
 
 // 1. EXPORTA LA APLICACIÓN para que Jest y Supertest puedan usarla sin iniciar el servidor HTTP
