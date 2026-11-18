@@ -60,7 +60,7 @@ jobs:
             sleep 10
             
             # 3. Health check: validar que el nuevo contenedor responde correctamente
-            if curl -sf http://localhost:3001/health; then
+            if curl -sf http://localhost:3001/; then
               echo "Health check exitoso. Activando nuevo contenedor..."
               
               # 4. Detener y eliminar el contenedor viejo (si existe)
