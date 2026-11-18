@@ -45,8 +45,9 @@ jobs:
           script: |
             IMAGE="camilaarandoguerra12/mi-app:latest"
             
-            # Limpieza exhaustiva previa
+            # 0. Forzar limpieza previa de contenedores y liberar el puerto 3001
             docker rm -f mi-app-new || true
+            sudo fuser -k 3001/tcp || true
             
             # 1. Desplegar la nueva imagen en un puerto alterno (3001) para validación
             docker pull $IMAGE
@@ -56,10 +57,10 @@ jobs:
               -p 3001:3000 \
               $IMAGE
             
-            # 2. Esperar 10 segundos para que la app inicialice
+            # 2. Esperar 10 segundos a que el contenedor inicialice
             sleep 10
             
-            # 3. Health check: validar que el nuevo contenedor responde correctamente (ahora usando la raíz /)
+            # 3. Health check: validar en la ruta raíz (/)
             if curl -sf http://localhost:3001/; then
               echo "Health check exitoso. Activando nuevo contenedor..."
               
