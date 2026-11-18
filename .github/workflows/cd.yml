@@ -53,8 +53,11 @@ jobs:
               -p 3001:3000 \
               $IMAGE
             
-            # 2. Esperar a que el contenedor inicialice
-            sleep 5
+            # 2. Esperar un poco más para que la app inicialice
+            sleep 10
+            
+            # Imprimir logs por si acaso falla para depurar
+            docker logs mi-app-new
             
             # 3. Health check: validar que el nuevo contenedor responde correctamente
             if curl -sf http://localhost:3001/health; then
@@ -74,7 +77,8 @@ jobs:
               # 6. Limpiar el contenedor de validación
               docker rm -f mi-app-new || true
             else
-              echo "Health check FALLIDO. Cancelando despliegue y manteniendo versión anterior."
+              echo "Health check FALLIDO. Mostrando logs del contenedor:"
+              docker logs mi-app-new
               docker rm -f mi-app-new || true
               exit 1
             fi
