@@ -1,17 +1,15 @@
-FROM node:18-alpine
-
+# Etapa 1: Build
+FROM node:20-alpine AS builder
 WORKDIR /app
-
-# Copiar archivos de dependencias
 COPY package*.json ./
-
-# Instalar todas las dependencias (incluyendo devDependencies si usas nodemon ahí)
-RUN npm install
-
-# Copiar el resto del código fuente
+RUN npm ci --only=production
 COPY . .
 
+# Etapa 2: Runtime
+FROM node:20-alpine
+WORKDIR /app
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/server.js ./
 EXPOSE 3000
-
-# Por defecto arranca en producción, pero se puede sobrescribir en docker-compose.dev.yml
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
