@@ -5,8 +5,8 @@ const app = express();
 app.use(express.json());
 
 // Endpoint de salud requerido para validar el contenedor
-app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'ok', version: '2.0.0' });
+app.get('/', (req, res) => {
+  res.status(200).json({ status: 'ok', version: '2.0.0', mensaje: "API CRUD funcionando correctamente" });
 });
 
 // 1. EXPORTA LA APLICACIÓN para que Jest y Supertest puedan usarla sin iniciar el servidor HTTP
