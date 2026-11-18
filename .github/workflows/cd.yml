@@ -45,6 +45,9 @@ jobs:
           script: |
             IMAGE="camilaarandoguerra12/mi-app:latest"
             
+            # Limpieza previa por si quedaron contenedores huérfanos
+            docker rm -f mi-app-new || true
+            
             # 1. Desplegar la nueva imagen en un puerto alterno (3001) para validación
             docker pull $IMAGE
             docker run -d \
@@ -53,11 +56,8 @@ jobs:
               -p 3001:3000 \
               $IMAGE
             
-            # 2. Esperar un poco más para que la app inicialice
+            # 2. Esperar a que la app inicialice
             sleep 10
-            
-            # Imprimir logs por si acaso falla para depurar
-            docker logs mi-app-new
             
             # 3. Health check: validar que el nuevo contenedor responde correctamente
             if curl -sf http://localhost:3001/health; then
