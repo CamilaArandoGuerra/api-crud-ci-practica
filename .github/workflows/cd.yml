@@ -45,7 +45,7 @@ jobs:
           script: |
             IMAGE="camilaarandoguerra12/mi-app:latest"
             
-            # Limpieza previa por si quedaron contenedores huérfanos
+            # Limpieza exhaustiva previa
             docker rm -f mi-app-new || true
             
             # 1. Desplegar la nueva imagen en un puerto alterno (3001) para validación
@@ -59,7 +59,7 @@ jobs:
             # 2. Esperar 10 segundos para que la app inicialice
             sleep 10
             
-            # 3. Health check: validar que el nuevo contenedor responde correctamente
+            # 3. Health check: validar que el nuevo contenedor responde correctamente (ahora usando la raíz /)
             if curl -sf http://localhost:3001/; then
               echo "Health check exitoso. Activando nuevo contenedor..."
               
@@ -77,7 +77,7 @@ jobs:
               # 6. Limpiar el contenedor de validación
               docker rm -f mi-app-new || true
             else
-              echo "Health check FALLIDO. Mostrando logs internos de la aplicación:"
+              echo "Health check FALLIDO. Mostrando logs internos:"
               docker logs mi-app-new
               docker rm -f mi-app-new || true
               exit 1
