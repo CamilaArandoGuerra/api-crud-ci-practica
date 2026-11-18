@@ -56,7 +56,7 @@ jobs:
               -p 3001:3000 \
               $IMAGE
             
-            # 2. Esperar a que la app inicialice
+            # 2. Esperar 10 segundos para que la app inicialice
             sleep 10
             
             # 3. Health check: validar que el nuevo contenedor responde correctamente
@@ -77,7 +77,7 @@ jobs:
               # 6. Limpiar el contenedor de validación
               docker rm -f mi-app-new || true
             else
-              echo "Health check FALLIDO. Mostrando logs del contenedor:"
+              echo "Health check FALLIDO. Mostrando logs internos de la aplicación:"
               docker logs mi-app-new
               docker rm -f mi-app-new || true
               exit 1
