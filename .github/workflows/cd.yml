@@ -45,9 +45,10 @@ jobs:
           script: |
             IMAGE="camilaarandoguerra12/mi-app:latest"
             
-            # 0. Forzar limpieza previa de contenedores y liberar el puerto 3001
+            # 0. Forzar limpieza total con privilegios sudo para liberar el puerto 3001
             docker rm -f mi-app-new || true
             sudo fuser -k 3001/tcp || true
+            sleep 2
             
             # 1. Desplegar la nueva imagen en un puerto alterno (3001) para validación
             docker pull $IMAGE
