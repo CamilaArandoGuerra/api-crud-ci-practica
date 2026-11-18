@@ -36,9 +36,9 @@ jobs:
       - name: Escaneo de vulnerabilidades con Trivy
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: ${{ secrets.DOCKER_USERNAME }}/mi-app:${{ github.sha }}
+          image-ref: '${{ secrets.DOCKER_USERNAME }}/mi-app:latest'
           format: 'table'
-          exit-code: '0'       # <--- Esto debe estar en '0' para que no falle el pipeline
+          exit-code: '0'
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
